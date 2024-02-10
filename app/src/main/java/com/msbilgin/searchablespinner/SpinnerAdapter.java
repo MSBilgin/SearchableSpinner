@@ -18,7 +18,6 @@ import java.util.List;
 
 public class SpinnerAdapter extends ArrayAdapter<String> {
     private final List<String> list;
-    private List<String> listFiltered;
     private final Context context;
     private final static Object LOCK = new Object();
 
@@ -30,12 +29,12 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
 
     @Override
     public int getCount() {
-        return listFiltered == null ? list.size() : listFiltered.size();
+        return list.size();
     }
 
     @Override
     public String getItem(int position) {
-        return listFiltered == null ? list.get(position) : listFiltered.get(position);
+        return list.get(position);
     }
 
     @Override
