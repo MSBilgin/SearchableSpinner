@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SpinnerAdapter;
@@ -84,6 +85,15 @@ public class SearchableSpinner extends AppCompatSpinner {
             });
 
             alertDialog.show();
+
+            //keyboard
+            if (editText.requestFocus()) {
+                AppCompatActivity activity = (AppCompatActivity) SearchableSpinner.this.getContext();
+                editText.postDelayed(() -> {
+                    InputMethodManager keyboard = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    keyboard.showSoftInput(editText, 0);
+                }, 200);
+            }
 
         }
         return true;
