@@ -49,6 +49,7 @@ public class SearchableSpinner extends AppCompatSpinner {
                     .setTitle(title)
                     .setView(view)
                     .setPositiveButton(closeButtonText, (dialogInterface, i) -> alertDialog.dismiss())
+					.setOnDismissListener(dialogInterface -> dropdownAdaptor.getFilter().filter(null))
                     .create();
 
 
